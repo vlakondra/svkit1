@@ -8,7 +8,7 @@
     <button onclick={()=>c++}>Клики {c}</button>
   </div>
 
-  <a href="{base}/about">About</a>
+  <a href="{base}/about">About site</a>
 
 
 <h1>Welcome to SvelteKit!!</h1>
