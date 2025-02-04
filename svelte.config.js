@@ -16,6 +16,11 @@ const config = {
 		adapter: adapter({
 			fallback: '200.html' // may differ from host to host
 		}),
+		//??
+		paths: {
+			 base: process.env.NODE_ENV === "production" ? "/svkit1" : "",
+			 },
+		//??
 		//precompress: false,
 		//strict: false
 	}

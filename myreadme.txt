@@ -46,3 +46,9 @@ Error: Encountered dynamic routes
 	} (опции pages, assets и 2 других KIT не принял)
     и снова запустил npm run build. Статичный сайт с одной страницей сгенерировался
     в папке build. смотреть -  npm run preview
+===================================================================
+
+git remote add origin https://github.com/vlakondra/svkit1.git
+git branch -M main
+git push -u origin main
+===================================================================
