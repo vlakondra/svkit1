@@ -1,9 +1,13 @@
 <script>
     import { base } from "$app/paths";
+
+    let c = $state(0)
   </script>
   
-  <h1>sveltekit-gh-pages</h1>
-  <p>Deployed to GitHub Pages.</p>
+  <div>
+    <button onclick={()=>c++}>`Клики ${c}`</button>
+  </div>
+
   <a href="{base}/about">About</a>
 
 

@@ -52,3 +52,19 @@ git remote add origin https://github.com/vlakondra/svkit1.git
 git branch -M main
 git push -u origin main
 ===================================================================
+копирование build в docs: cp -r build/* docs/
+====================================================
+Instead of manually copying the content of the  build  folder to the  gh-pages  branch, we can use the  gh-pages  npm package to automate this process. To do this, we need to install the package:
+
+pnpm add -D gh-pages
+Then, we need a new script in the  package.json  file to deploy the website:
+
+{
+    "scripts": {
+        "deploy": "pnpm build && pnpx gh-pages -d build -t true"
+    }
+}
+Finally, we can run the script to deploy the website:
+
+pnpm deploy
+====================================================
