@@ -3,9 +3,9 @@
 
     let c = $state(0)
   </script>
-  
+
   <div>
-    <button onclick={()=>c++}>`Клики ${c}`</button>
+    <button onclick={()=>c++}>Клики {c}</button>
   </div>
 
   <a href="{base}/about">About</a>

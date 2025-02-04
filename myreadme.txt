@@ -56,7 +56,7 @@ git push -u origin main
 ====================================================
 Instead of manually copying the content of the  build  folder to the  gh-pages  branch, we can use the  gh-pages  npm package to automate this process. To do this, we need to install the package:
 
-pnpm add -D gh-pages
+pnpm add -D gh-pagescp -r build/* docs/
 Then, we need a new script in the  package.json  file to deploy the website:
 
 {
@@ -68,3 +68,10 @@ Finally, we can run the script to deploy the website:
 
 pnpm deploy
 ====================================================
+
+git config --global --get http.proxy
+git config --global --get https.proxy
+
+git config --global http.proxy http://username:password@proxy.server.com:port
+git config --global https.proxy http://username:password@proxy.server.com:port
+========================================================
