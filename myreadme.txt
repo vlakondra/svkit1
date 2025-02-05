@@ -2,6 +2,7 @@ npm run dev -- --open
 
 python -m http.server
 
+https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
 
 сразу после создания проекта запустил npm run build
 и получил эту ошибку:
