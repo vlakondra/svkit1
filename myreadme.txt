@@ -70,6 +70,10 @@ Finally, we can run the script to deploy the website:
 pnpm deploy
 ====================================================
 
+Попробовать убрать fallback в: 	adapter: adapter({
+			fallback: '200.html' // may differ from host to host
+		}),
+===================================================
 git config --global --get http.proxy
 git config --global --get https.proxy
 
