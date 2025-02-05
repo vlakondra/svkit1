@@ -52,3 +52,4 @@ git remote add origin https://github.com/vlakondra/svkit1.git
 git branch -M main
 git push -u origin main
 ===================================================================
+git checkout main [ghpages]
