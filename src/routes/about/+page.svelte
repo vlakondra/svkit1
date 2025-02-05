@@ -3,6 +3,6 @@
   </script>
   
  
-<a href="{base}/">Домой</a>
+<a href="{base}/">Домой!</a>
 
 <h1>About</h1>
