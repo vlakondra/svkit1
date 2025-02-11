@@ -17,11 +17,15 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		//pages: 'build',
 		//assets: 'build',
-
+        //added
 		files: {
             assets: 'docs' // This will save assets to /doc instead of /build
         },
-
+		prerender: {
+            enabled: false,
+        },
+        //added
+		
 		adapter: adapter({
 			fallback: '200.html' // may differ from host to host
 		}),
