@@ -83,4 +83,4 @@ git config --global https.proxy http://username:password@proxy.server.com:port
 
 xcopy build docs\ /E
 
-rmdir some_directory /Q/S
+rmdir docs /Q/S
