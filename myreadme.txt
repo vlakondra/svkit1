@@ -81,5 +81,6 @@ git config --global http.proxy http://username:password@proxy.server.com:port
 git config --global https.proxy http://username:password@proxy.server.com:port
 ========================================================
 
-Сделал push gitverse
-Вернулся на github
+xcopy build docs\ /E
+
+rmdir some_directory /Q/S
