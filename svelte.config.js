@@ -11,7 +11,7 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			//output: 'docs', 
+			//output ? outDir: 'docs', 
 			fallback: '200.html'
 		}),
 		paths: {
