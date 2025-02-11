@@ -1,1 +1,0 @@
-import{t as o,a as e}from"../chunks/D8AipEDR.js";import"../chunks/3e4k4AQz.js";import{f as m,n as p}from"../chunks/VCco8WXk.js";import{s}from"../chunks/CgjfakqO.js";import{b as f}from"../chunks/T8GW1iYq.js";var i=o("<a>Домой!</a> <h1>About</h1>",1);function v(t){var a=i(),r=m(a);s(r,"href",`${f??""}/`),p(2),e(t,a)}export{v as component};
