@@ -127,19 +127,5 @@
     }
   }
 
-  /*
-  .cls {
-    border: 1px solid blue;
-  }
-  [data-selected="true"] {
-    background-color: gold;
-  }
-  [data-selectedIndex="1"] {
-    color: blue;
-  }
-  [data-selectedIndex="2"] {
-    color: yellow;
-  }
 
-  */
 </style>
