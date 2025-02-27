@@ -84,3 +84,9 @@ git config --global https.proxy http://username:password@proxy.server.com:port
 xcopy build docs\ /E
 
 rmdir docs /Q/S
+
+############################################
+27.02
+установил:
+npm i drizzle-orm @libsql/client
+npm i -D drizzle-kit
