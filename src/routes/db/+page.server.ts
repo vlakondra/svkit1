@@ -13,6 +13,7 @@ const db = drizzle({
 
 export const load = (async () => {
   try {
+    
     const result = await db.all('select * from Artists');
     const result2 = await db.select()
       .from(arts)
