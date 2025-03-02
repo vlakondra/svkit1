@@ -33,12 +33,12 @@ export const load = (async (): Promise<{ artAlbums: ArtWithAlbums }> => {
             // добавим альбомы к исполнителю
             artist.albums.push({ albumTitle, albumId });
             return acc;
-        },[] as ArtWithAlbums );
-        return { artAlbums };
+        }, [] as ArtWithAlbums[] );
+        return {artAlbums };
 
     } catch (error) {
         console.error(error);
-        return { artAlbums: [] }
+        return { ArtWithAlbums }
     }
 
 }) satisfies PageServerLoad;
