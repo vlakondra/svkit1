@@ -90,3 +90,6 @@ rmdir docs /Q/S
 установил:
 npm i drizzle-orm @libsql/client
 npm i -D drizzle-kit
+
+from page.server.ts
+const result = await db.all('select * from Artists');

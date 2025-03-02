@@ -1,30 +1,17 @@
-import { arts } from '$lib/server/schema';
-import { ne } from "drizzle-orm"
-//import { Name } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
-import { drizzle } from 'drizzle-orm/libsql';
+import type { Artist } from "$lib/interfaces/artist";
+import { db,artists } from '$lib/server/db';
 
-
-const db = drizzle({
-  connection: {
-    url: 'file:src/lib/server/db/chinook.db'
-  }
-});
-
-export const load = (async () => {
+export const load = (async (): Promise<{ result: Artist[] }> => {
   try {
-    
-    const result = await db.all('select * from Artists');
-    const result2 = await db.select()
-      .from(arts)
-      .where(ne(arts.Name, 'AC/DC'))
-      .limit(3)
-
-    console.log(result2)
-    return { result2 };
+    const result = await db.select()
+      .from(artists)
+      .limit(5)
+    console.log(result)
+    return { result };
   } catch (error) {
     console.error(error);
+    return { result: [] };
   }
-
 
 }) satisfies PageServerLoad;

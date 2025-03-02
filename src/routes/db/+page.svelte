@@ -1,13 +1,16 @@
 <svelte:options runes={true} />
 
-<script>
-    let { data } = $props();
+<script lang='ts'>
+    import type {PageProps} from "./$types";
+    let { data }: PageProps = $props();
 </script>
-
-<!-- {JSON.stringify(data)} -->
-
+{JSON.stringify(data)}
 <h3>
-    {#each data.result2 as item}
-        <div>{item.Name}</div>
-    {/each}
+    {#if data && data.result}
+        {#each data.result as item}
+            <div>{item.name}</div>
+        {/each}
+    {:else}
+        <div>Данных нет</div>
+    {/if}
 </h3>
