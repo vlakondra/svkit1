@@ -1,6 +1,6 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from './$types'
 import type { Artist } from "$lib/interfaces/artist";
-import { db,artists } from '$lib/server/db';
+import { db, artists } from '$lib/server/db';
 
 export const load = (async (): Promise<{ result: Artist[] }> => {
   try {

@@ -1,5 +1,5 @@
 import { drizzle } from 'drizzle-orm/libsql';
-import { artists } from '$lib/server/schema';
+import { artists,albums } from '$lib/server/schema';
 
 const db = drizzle({
     connection: {
@@ -7,4 +7,4 @@ const db = drizzle({
     }
 });
 
-export { db, artists };
+export { db, artists,albums };

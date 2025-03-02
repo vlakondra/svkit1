@@ -1,4 +1,4 @@
-<!-- +page.svelte -->
+<!-- +page.svelte
 <script lang="ts">
     import { onMount } from "svelte";
 
@@ -38,4 +38,4 @@
     {#each r.answers as a}
         <div>{a}</div>
     {/each}
-{/each}
+{/each} -->

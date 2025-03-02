@@ -97,3 +97,29 @@ npm i -D drizzle-kit
 from page.server.ts
 const result = await db.all('select * from Artists');
 >>>>>>> ghp
+
+
+      // Transform the result into the desired format
+        const formattedResult = result.reduce((acc, row) => {
+            const { artName, albumId, albumTitle } = row;
+
+            // Check if the artist already exists in the accumulator
+            let artist = acc.find(a => a.artName === artName);
+            if (!artist) {
+                artist = { artName, albums: [] };
+                acc.push(artist);
+            }
+
+            // Add the album to the artist's album list
+            artist.albums.push({ title: albumTitle, albumId });
+
+            return acc;
+        }, []);
+
+        console.log(formattedResult);
+        return { result: formattedResult };
+    } catch (error) {
+        console.error(error);
+        return { result: [] };
+    }
+}) satisfies PageServerLoad;
