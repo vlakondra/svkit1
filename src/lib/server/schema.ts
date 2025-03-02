@@ -1,8 +1,3 @@
-// import { sqliteTable as table } from "drizzle-orm/sqlite-core";
-// import * as t from "drizzle-orm/sqlite-core";
-// //Не забыть проверить ->OK
-// import {index} from 'drizzle-orm/sqlite-core'
-// import {int,uniqueIndex,text} from 'drizzle-orm/sqlite-core'
 
 // export const arts = t.sqliteTable("artists", {
 //     ArtistId: t.int().primaryKey({ autoIncrement: true }),
@@ -12,6 +7,16 @@
 // ]);
 import { sqliteTable, text, index, foreignKey, integer, numeric, primaryKey } from "drizzle-orm/sqlite-core"
   import { sql } from "drizzle-orm"
+
+//!! https://orm.drizzle.team/docs/latest-releases/drizzle-orm-v0283#-added-tableinferselect--table_inferselect-and-tableinferinsert--table_inferinsert-for-more-convenient-table-model-type-inference
+import type { InferSelectModel } from "drizzle-orm";
+//Drizzle формирует TS-интерфейсы автоматом. см. onetable
+export type Question = InferSelectModel<typeof artists>;
+
+export type Album = InferSelectModel<typeof albums>;
+export type ArtWithAlbums =Question & {albums:Album[]}
+//!!
+import { relations } from 'drizzle-orm';
 
 export const albums = sqliteTable("albums", {
 	albumId: integer("AlbumId").primaryKey({ autoIncrement: true }).notNull(),
@@ -26,6 +31,7 @@ export const artists = sqliteTable("artists", {
 	artistId: integer("ArtistId").primaryKey({ autoIncrement: true }).notNull(),
 	name: text("Name", { length: 120 }),
 });
+
 
 export const customers = sqliteTable("customers", {
 	customerId: integer("CustomerId").primaryKey({ autoIncrement: true }).notNull(),

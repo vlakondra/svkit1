@@ -8,7 +8,7 @@
 <h3>
     {#if data && data.result}
         {#each data.result as item}
-            <div>{item.name}</div>
+            <div>{item.artistId}--{item.name}</div>
         {/each}
     {:else}
         <div>Данных нет</div>

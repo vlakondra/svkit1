@@ -1,8 +1,11 @@
 import type { PageServerLoad } from './$types'
-import type { Artist } from "$lib/interfaces/artist";
+import type { simpleArtist } from "$lib/interfaces/artist";
 import { db, artists } from '$lib/server/db';
 
-export const load = (async (): Promise<{ result: Artist[] }> => {
+import type { Question } from '$lib/server/schema';
+
+//simpleArtist
+export const load = (async (): Promise<{ result: Question [] }> => {
   try {
     const result = await db.select()
       .from(artists)
