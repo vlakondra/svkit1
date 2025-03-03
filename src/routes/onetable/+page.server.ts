@@ -1,20 +1,17 @@
-import type { PageServerLoad } from './$types'
+import type { PageServerLoad } from './$types';
 import type { simpleArtist } from "$lib/interfaces/artist";
 import { db, artists } from '$lib/server/db';
-
 import type { Question } from '$lib/server/schema';
 
-//simpleArtist
-export const load = (async (): Promise<{ result: Question [] }> => {
+export const load: PageServerLoad = (async () => {
   try {
-    const result = await db.select()
+    // Можно явно определять тип рез-та, но это не обязательно
+    const result: Question[] = await db.select()
       .from(artists)
-      .limit(5)
-    console.log(result)
+      .limit(5);
+
     return { result };
   } catch (error) {
-    console.error(error);
-    return { result: [] };
+    return { error }
   }
-
-}) satisfies PageServerLoad;
+})
