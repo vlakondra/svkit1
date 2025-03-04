@@ -3,9 +3,9 @@ import type { Artist } from "$lib/interfaces/artist";
 import { db, artists, albums } from '$lib/server/db'
 import { eq, asc, desc, } from 'drizzle-orm';
 
-import type { ArtWithAlbums, Album } from '$lib/server/schema';
+import type { ArtWithAlbums } from '$lib/server/schema';
 
-export const load = (async () => {
+export const load: PageServerLoad = (async () => {
     try {
         const query = await db.select(
             {
@@ -22,16 +22,18 @@ export const load = (async () => {
 
         // создаем структуру Исполнитель-Альбомы
         const result = query.reduce((acc, row) => {
+            //generic вар-т: query.reduce<ArtWithAlbums[]>(...)
             let artist = acc.find(a => a.name === row.artName);
             if (!artist) {
                 artist = {
                     artistId: row.artId,
                     name: row.artName,
-                    albums: [] as Album[]
+                    albums: [] //as Album[] <-- Оба вар-та работают
                 };
+                // добавим исполнителя; список альбомов пуст
                 acc.push(artist);
             }
-            // добавим альбомы к исполнителю
+            // добавим альбом к исполнителю
             artist.albums.push({
                 albumId: row.albumId,
                 artistId: row.artistId,
