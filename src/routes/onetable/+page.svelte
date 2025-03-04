@@ -1,9 +1,5 @@
 <svelte:options runes={true} />
 <script lang='ts'>
-    //import type {PageProps} from "./$types";
-    //let { data }: PageProps = $props();
-
-//PageProps vs PageData --> DeepSeek
 
     import type { PageData } from "./$types";
     //The syntax { data }: { data: PageData } is 
