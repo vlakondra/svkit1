@@ -1,15 +1,10 @@
-import type { LayoutLoad } from './$types';
+// import type { LayoutLoad } from './$types';
 
-export const load:LayoutLoad = (async (p) => {
-    let data = await p.data;
-    console.log('log layout.ts')
-    console.log(p.data)
+// export const load:LayoutLoad = (async (p) => {
 
-    let pp = p.params.par
-    console.log(p.params.par)
+//     console.log('layout load',p)
 
-    let data2 = {b:777}
+//     let data2 = {b:777}
 
-    return {data,
-         data2, pp};
-});
+//     return { data2};
+// });

@@ -5,24 +5,21 @@
     let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
 
-<div style="display:flex">
-    <div style="width:70%;background: #dedede;">
-        <h5>layout content</h5>
-        {@render children()}
-    </div>
 
-    <div style='padding-left: 20px;'>
-        <p>
-            <a href="/params/5">link</a>
-        </p>
-        <p>
-            <a href="/params/6">link</a>
-        </p>
-        <p>
-            <a href="/onetable">onetable</a>
-        </p>
-        <p>
-            <a href="/jointables">jointables</a>
-        </p>
+<div style="display:flex">
+    <div>
+        {#if data && data.result}
+            {#each data.result as artist}
+                <div>
+                    <a href={`/params/${artist.artistId}`}>
+                        {artist.name}
+                    </a>
+                </div>
+            {/each}
+        {/if}
+
     </div>
+    <div style="width:50%;margin-left:20px;background: #dedede;">
+        {@render children()}
+   </div>
 </div>
