@@ -12,7 +12,7 @@
             {#each data.result as artist}
                 <div>
                     <a href={`/params/${artist.artistId}`}>
-                        {artist.name}
+                        {artist.artistName}
                     </a>
                 </div>
             {/each}
