@@ -8,7 +8,7 @@
 
 <div style="display:flex">
     <div>
-        {#if data && data.result}
+        {#if data?.result}
             {#each data.result as artist}
                 <div>
                     <a href={`/params/${artist.artistId}`}>
@@ -17,7 +17,7 @@
                 </div>
             {/each}
         {/if}
-
+<a href='/params/'>Params</a>
     </div>
     <div style="width:50%;margin-left:20px;background: #dedede;">
         {@render children()}
