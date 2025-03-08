@@ -4,9 +4,7 @@
     let {data}:{data:PageData} = $props()
 </script>
 
-<h3>
-    {JSON.stringify(data.result)}
-</h3>
+
 {#if data && data.result}
     {#each data.result as artist}
         <h3>{artist.name}</h3>

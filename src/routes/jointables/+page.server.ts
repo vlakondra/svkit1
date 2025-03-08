@@ -21,7 +21,8 @@ export const load: PageServerLoad = (async () => {
             .limit(10)
 
         // создаем структуру Исполнитель-Альбомы
-        const result = query.reduce((acc, row) => {
+        //тип ArtWithAlbums[] тоже м.б. выведен автоматически
+        const result:ArtWithAlbums[] = query.reduce((acc, row) => {
             //generic вар-т: query.reduce<ArtWithAlbums[]>(...)
             let artist = acc.find(a => a.name === row.artName);
             if (!artist) {
@@ -45,7 +46,6 @@ export const load: PageServerLoad = (async () => {
         return { result };
     } catch (error) {
         console.error(error);
-        return { error }
     }
 
 });

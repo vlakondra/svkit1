@@ -4,14 +4,15 @@
 </script>
 
 <h1>PARAMS. Количество альбомов</h1>
+<a href='/'>Домой</a>
 
 <div style="width:500px;margin:auto; max-height: 400px; overflow-y:scroll;">
-    {#if data?.result}
+    {#if data?.artAlbCount}
         <div style="display:flex;gap:10px">
             <div style="width:350px">Исполнитель</div>
             <div>Альбомы</div>
         </div>
-        {#each data.result as artist}
+        {#each data.artAlbCount as artist}
             <div style="display:flex;gap:10px">
                 <div style="width:350px;padding:3px">
                     <a href={`/params/${artist.artistId}`}>
