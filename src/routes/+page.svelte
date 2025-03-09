@@ -1,6 +1,10 @@
+<script lang="ts">
+    import type { PageData } from "./$types";
+    let { data }: { data: PageData } = $props();
+</script>
 
 <h2>Home page</h2>
-
+{JSON.stringify(data)}
 
 <p>
     <a href="/onetable">Простая таблица</a>

@@ -13,6 +13,7 @@
 </script>
 
 {JSON.stringify(data)}
+
 <h3>
     {#if data && data.result} 
         {#each data.result as item}
