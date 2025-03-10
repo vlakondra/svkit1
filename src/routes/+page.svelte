@@ -6,6 +6,11 @@
 <h2>Home page</h2>
 {JSON.stringify(data)}
 
+
+<p>
+    <a href="/findalbum">Поиск альбомов</a>
+</p>
+
 <p>
     <a href="/onetable">Простая таблица</a>
 </p>

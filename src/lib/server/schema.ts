@@ -13,8 +13,12 @@ import type { InferSelectModel } from "drizzle-orm";
 //Drizzle формирует TS-интерфейсы автоматом. см. onetable
 export type Question = InferSelectModel<typeof artists>;
 
+export type Tracks = InferSelectModel<typeof tracks>;
+
 export type Album = InferSelectModel<typeof albums>;
 export type ArtWithAlbums =Question & {albums:Album[]}
+
+
 //!!
 import { relations } from 'drizzle-orm';
 
