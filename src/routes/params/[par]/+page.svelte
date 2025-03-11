@@ -12,6 +12,7 @@
         }
     };
 </script>
+<<<<<<< Updated upstream
 
 <div style="padding:10px">
     {#if data && data.artAlbums}
@@ -19,6 +20,12 @@
             {getArtName(data.artAlbums[0]?.artistId)}; Кол-во: {data.artAlbums.length}
         </h4>
         {#each data.artAlbums as album}
+=======
+{JSON.stringify(data.result)}
+<div style='padding:10px'>
+    {#if data && data.artalbums}
+        {#each data.artalbums as album}
+>>>>>>> Stashed changes
             <div>{album.title}</div>
         {/each}
     {/if}
