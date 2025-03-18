@@ -1,9 +1,9 @@
 import { sqliteTable, text, index, foreignKey, integer, numeric, primaryKey } from "drizzle-orm/sqlite-core"
-  import { sql } from "drizzle-orm"
+import { sql } from "drizzle-orm"
 
 //Lucia
 export const userTable = sqliteTable("user", {
-	id: integer("id").primaryKey(),
+	id: text("id").primaryKey(),
 	username: text('username'),
 	passwordHash: text('passwordHash').notNull()
 });
@@ -11,7 +11,7 @@ export const userTable = sqliteTable("user", {
 //id был типа integer, и это вызывало ошибку в auth.ts при создании объекта session 
 export const sessionTable = sqliteTable("session", {
 	id: text("id").primaryKey(),
-	userId: integer("user_id")
+	userId: text("user_id")
 		.notNull()
 		.references(() => userTable.id),
 	expiresAt: integer("expires_at", {
@@ -30,7 +30,6 @@ import type { InferSelectModel } from "drizzle-orm";
 export type User = InferSelectModel<typeof userTable>;
 export type Session = InferSelectModel<typeof sessionTable>;
 
-/*
 
 //Drizzle формирует TS-интерфейсы автоматом. см. onetable
 export type Question = InferSelectModel<typeof artists>;
@@ -38,7 +37,7 @@ export type Question = InferSelectModel<typeof artists>;
 export type Tracks = InferSelectModel<typeof tracks>;
 
 export type Album = InferSelectModel<typeof albums>;
-export type ArtWithAlbums =Question & {albums:Album[]}
+export type ArtWithAlbums = Question & { albums: Album[] }
 
 
 //!!
@@ -50,9 +49,9 @@ export const albums = sqliteTable("albums", {
 	title: text("Title", { length: 160 }).notNull(),
 	artistId: integer("ArtistId").notNull().references(() => artists.artistId),
 },
-(table) => [
-	index("IFK_AlbumArtistId").on(table.artistId),
-]);
+	(table) => [
+		index("IFK_AlbumArtistId").on(table.artistId),
+	]);
 
 export const artists = sqliteTable("artists", {
 	artistId: integer("ArtistId").primaryKey({ autoIncrement: true }).notNull(),
@@ -75,9 +74,9 @@ export const customers = sqliteTable("customers", {
 	email: text("Email", { length: 60 }).notNull(),
 	supportRepId: integer("SupportRepId").references(() => employees.employeeId),
 },
-(table) => [
-	index("IFK_CustomerSupportRepId").on(table.supportRepId),
-]);
+	(table) => [
+		index("IFK_CustomerSupportRepId").on(table.supportRepId),
+	]);
 
 export const employees = sqliteTable("employees", {
 	employeeId: integer("EmployeeId").primaryKey({ autoIncrement: true }).notNull(),
@@ -96,14 +95,14 @@ export const employees = sqliteTable("employees", {
 	fax: text("Fax", { length: 24 }),
 	email: text("Email", { length: 60 }),
 },
-(table) => [
-	index("IFK_EmployeeReportsTo").on(table.reportsTo),
-	foreignKey(() => ({
+	(table) => [
+		index("IFK_EmployeeReportsTo").on(table.reportsTo),
+		foreignKey(() => ({
 			columns: [table.reportsTo],
 			foreignColumns: [table.employeeId],
 			name: "employees_ReportsTo_employees_EmployeeId_fk"
 		})),
-]);
+	]);
 
 export const genres = sqliteTable("genres", {
 	genreId: integer("GenreId").primaryKey({ autoIncrement: true }).notNull(),
@@ -121,9 +120,9 @@ export const invoices = sqliteTable("invoices", {
 	billingPostalCode: text("BillingPostalCode", { length: 10 }),
 	total: numeric("Total").notNull(),
 },
-(table) => [
-	index("IFK_InvoiceCustomerId").on(table.customerId),
-]);
+	(table) => [
+		index("IFK_InvoiceCustomerId").on(table.customerId),
+	]);
 
 export const invoiceItems = sqliteTable("invoice_items", {
 	invoiceLineId: integer("InvoiceLineId").primaryKey({ autoIncrement: true }).notNull(),
@@ -132,10 +131,10 @@ export const invoiceItems = sqliteTable("invoice_items", {
 	unitPrice: numeric("UnitPrice").notNull(),
 	quantity: integer("Quantity").notNull(),
 },
-(table) => [
-	index("IFK_InvoiceLineTrackId").on(table.trackId),
-	index("IFK_InvoiceLineInvoiceId").on(table.invoiceId),
-]);
+	(table) => [
+		index("IFK_InvoiceLineTrackId").on(table.trackId),
+		index("IFK_InvoiceLineInvoiceId").on(table.invoiceId),
+	]);
 
 export const mediaTypes = sqliteTable("media_types", {
 	mediaTypeId: integer("MediaTypeId").primaryKey({ autoIncrement: true }).notNull(),
@@ -151,10 +150,10 @@ export const playlistTrack = sqliteTable("playlist_track", {
 	playlistId: integer("PlaylistId").notNull().references(() => playlists.playlistId),
 	trackId: integer("TrackId").notNull().references(() => tracks.trackId),
 },
-(table) => [
-	index("IFK_PlaylistTrackTrackId").on(table.trackId),
-	primaryKey({ columns: [table.playlistId, table.trackId], name: "playlist_track_PlaylistId_TrackId_pk"})
-]);
+	(table) => [
+		index("IFK_PlaylistTrackTrackId").on(table.trackId),
+		primaryKey({ columns: [table.playlistId, table.trackId], name: "playlist_track_PlaylistId_TrackId_pk" })
+	]);
 
 export const tracks = sqliteTable("tracks", {
 	trackId: integer("TrackId").primaryKey({ autoIncrement: true }).notNull(),
@@ -167,13 +166,12 @@ export const tracks = sqliteTable("tracks", {
 	bytes: integer("Bytes"),
 	unitPrice: numeric("UnitPrice").notNull(),
 },
-(table) => [
-	index("IFK_TrackMediaTypeId").on(table.mediaTypeId),
-	index("IFK_TrackGenreId").on(table.genreId),
-	index("IFK_TrackAlbumId").on(table.albumId),
-]);
+	(table) => [
+		index("IFK_TrackMediaTypeId").on(table.mediaTypeId),
+		index("IFK_TrackGenreId").on(table.genreId),
+		index("IFK_TrackAlbumId").on(table.albumId),
+	]);
 
 export const sqliteStat1 = sqliteTable("sqlite_stat1", {
 });
 
-*/
