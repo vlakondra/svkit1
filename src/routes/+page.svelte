@@ -4,9 +4,15 @@
 </script>
 
 <h2>Home page</h2>
-{JSON.stringify(data)}
 
+<button
+    class="sm:bg-blue-800 md:bg-green-800 lg:bg-red-800
 
+ px-2 py-3 w-24 rounded-2xl
+ tracking-wider "
+>
+    Пуск
+</button>
 <p>
     <a href="/findalbum">Поиск альбомов</a>
 </p>
