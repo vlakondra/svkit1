@@ -30,7 +30,7 @@ import type { InferSelectModel } from "drizzle-orm";
 export type User = InferSelectModel<typeof userTable>;
 export type Session = InferSelectModel<typeof sessionTable>;
 
-
+/*
 
 //Drizzle формирует TS-интерфейсы автоматом. см. onetable
 export type Question = InferSelectModel<typeof artists>;
@@ -176,3 +176,4 @@ export const tracks = sqliteTable("tracks", {
 export const sqliteStat1 = sqliteTable("sqlite_stat1", {
 });
 
+*/

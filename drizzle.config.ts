@@ -1,11 +1,11 @@
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
-    dialect: "sqlite",
-    schema: "./src/lib/myschemas/schema.ts",
-    out: "./drizzle",
-    dbCredentials:{url:"src/lib/server/db/chinook.db"}
-  });
+  dialect: "sqlite",
+  schema: "./src/lib/server/schema.ts",
+  out: "./drizzle",
+  dbCredentials: { url: "src/lib/server/db/chinook.db" }
+});
 
 
 // export default {
