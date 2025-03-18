@@ -1,15 +1,37 @@
-
-// export const arts = t.sqliteTable("artists", {
-//     ArtistId: t.int().primaryKey({ autoIncrement: true }),
-//     Name: t.text("Name"),
-// }, (t) => [
-//     index('ArtIdx').on(t.ArtistId)
-// ]);
 import { sqliteTable, text, index, foreignKey, integer, numeric, primaryKey } from "drizzle-orm/sqlite-core"
   import { sql } from "drizzle-orm"
 
+//Lucia
+export const userTable = sqliteTable("user", {
+	id: integer("id").primaryKey(),
+	username: text('username'),
+	passwordHash: text('passwordHash').notNull()
+});
+
+//id был типа integer, и это вызывало ошибку в auth.ts при создании объекта session 
+export const sessionTable = sqliteTable("session", {
+	id: text("id").primaryKey(),
+	userId: integer("user_id")
+		.notNull()
+		.references(() => userTable.id),
+	expiresAt: integer("expires_at", {
+		mode: "timestamp"
+	}).notNull()
+});
+
+
+//end Lucia
+
+
+
 //!! https://orm.drizzle.team/docs/latest-releases/drizzle-orm-v0283#-added-tableinferselect--table_inferselect-and-tableinferinsert--table_inferinsert-for-more-convenient-table-model-type-inference
 import type { InferSelectModel } from "drizzle-orm";
+
+export type User = InferSelectModel<typeof userTable>;
+export type Session = InferSelectModel<typeof sessionTable>;
+
+
+
 //Drizzle формирует TS-интерфейсы автоматом. см. onetable
 export type Question = InferSelectModel<typeof artists>;
 
@@ -21,6 +43,7 @@ export type ArtWithAlbums =Question & {albums:Album[]}
 
 //!!
 import { relations } from 'drizzle-orm';
+import { number } from "zod";
 
 export const albums = sqliteTable("albums", {
 	albumId: integer("AlbumId").primaryKey({ autoIncrement: true }).notNull(),

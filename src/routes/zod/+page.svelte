@@ -1,9 +1,11 @@
 <script lang="ts">
-    import type { PageData, ActionData } from "./$types"; //Вар-т 2
-   // import type { PageProps } from "./$types"; //Вар-т 1
+    
+    import type { PageProps } from "./$types"; //Вар-т 1
+     let { data, form }: PageProps = $props(); //Вар-т 1
 
-    let { data, form }: { data: PageData; form: ActionData } = $props(); //Вар-т 2
-    // let { data, form }: PageProps = $props(); //Вар-т 1
+   // import type { PageData, ActionData } from "./$types"; //Вар-т 2
+   // let { data, form }: { data: PageData; form: ActionData } = $props(); //Вар-т 2
+
 </script>
 
 <form method="POST">
