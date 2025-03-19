@@ -3,6 +3,10 @@
 	import type { ActionData } from "./$types";
 
 	let { form }: { form: ActionData } = $props();
+
+	function reg(){
+		window.location.href='/demo/lucia/register'
+	}
 </script>
 
 <h1>Login/Register</h1>
@@ -16,7 +20,9 @@
 		<input type="password" name="password" />
 	</label>
 	<button>Login</button>
-	<button formaction="?/register">Register</button>
+	<!-- <button formaction="?/register">Register</button> -->
+	<a href='/demo/lucia/register'>Register</a>
+	<button type='button' onclick={reg}>REG</button>
 </form>
 <p style="color: red">{form?.message ?? ""}</p>
 
