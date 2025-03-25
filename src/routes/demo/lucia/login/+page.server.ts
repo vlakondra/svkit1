@@ -7,6 +7,26 @@ import { db } from '$lib/server/db';
 import * as table from '$lib/server/schema'; //'$lib/server/db/schema'
 import type { Actions, PageServerLoad } from './$types';
 
+
+///
+// export type MyActionData = {
+// 	message?: string;
+// 	usererr?: string;
+// 	// Ваши кастомные свойства
+// 	//userData?: { name: string; age: number };
+// 	//errors?: Record<string, string>;
+// 	//status?: 'success' | 'error';
+//   };
+
+//  type MyActionData ={
+// 	message?: string;
+// 	usererr?: string; // Добавляем кастомное поле
+// 	// Другие ваши дополнительные поля...
+//   }
+
+
+///
+
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(302, '/demo/lucia');
@@ -21,7 +41,7 @@ export const actions: Actions = {
 		const password = formData.get('password');
 
 		if (!validateUsername(username)) {
-			return fail(400, { message: 'Invalid username (min 3, max 31 characters, alphanumeric only)' });
+			return fail(400, {kk:123, usermessage: 'Invalid username (min 3, max 31 characters, alphanumeric only)' })
 		}
 		if (!validatePassword(password)) {
 			return fail(400, { message: 'Invalid password (min 6, max 255 characters)' });
@@ -29,7 +49,7 @@ export const actions: Actions = {
 
 		const results = await db
 			.select()
-			.from(table.userTable)
+			.from(table.userTable) //Что за userTable?
 			.where(eq(table.userTable.username, username));
 
 		const existingUser = results.at(0);
@@ -84,7 +104,7 @@ export const actions: Actions = {
 			console.log(e)
 			return fail(500, { message: 'An error has occurred' });
 		}
-		return redirect(302, '/demo/lucia');
+		return redirect(302, '/');
 	},
 };
 

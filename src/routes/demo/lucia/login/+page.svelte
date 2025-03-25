@@ -4,8 +4,8 @@
 
 	let { form }: { form: ActionData } = $props();
 
-	function reg(){
-		window.location.href='/demo/lucia/register'
+	function reg() {
+		window.location.href = "/demo/lucia/register";
 	}
 </script>
 
@@ -20,11 +20,14 @@
 		<input type="password" name="password" />
 	</label>
 	<button>Login</button>
-	<!-- <button formaction="?/register">Register</button> -->
-	<a href='/demo/lucia/register'>Register</a>
-	<button type='button' onclick={reg}>REG</button>
+	<button formaction="?/register">Register</button>
+	<!-- <a href="/demo/lucia/register">Register</a> -->
+	<button type="button" onclick={reg}>REG</button>
 </form>
 <p style="color: red">{form?.message ?? ""}</p>
+<!-- {#if form?.usererr}
+<p style="color: red">{form?.usererr ?? ""}</p>
+{/if} -->
 
 <!--
   This example requires updating your template:
@@ -33,7 +36,7 @@ https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms
   <html class="h-full bg-white">
   <body class="h-full">
   ```
--->
+
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<img
@@ -44,17 +47,17 @@ https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms
 		<h2
 			class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900"
 		>
-			Sign in to your account
+			Войти в программу
 		</h2>
 	</div>
 
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-		<form class="space-y-6" action="#" method="POST">
+		<form method="post" action="?/login" use:enhance class="space-y-4">
 			<div>
 				<label
 					for="email"
 					class="block text-sm/6 font-medium text-gray-900"
-					>Email address</label
+					>Логин</label
 				>
 				<div class="mt-2">
 					<input
@@ -73,7 +76,7 @@ https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms
 					<label
 						for="password"
 						class="block text-sm/6 font-medium text-gray-900"
-						>Password</label
+						>Пароль</label
 					>
 					<div class="text-sm">
 						<a
@@ -95,22 +98,34 @@ https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms
 				</div>
 			</div>
 
+			<div
+				class="h-4.5 text-sm/4 font-medium text-red-700"
+				style="border:1px solid gray"
+			>
+				произошла ошибка
+			</div>
+
 			<div>
 				<button
 					type="submit"
 					class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>Sign in</button
+					>Войти</button
 				>
 			</div>
 		</form>
 
 		<p class="mt-10 text-center text-sm/6 text-gray-500">
-			Not a member?
-			<a
-				href="#"
-				class="font-semibold text-indigo-600 hover:text-indigo-500"
-				>Start a 14 day free trial</a
+			Вопросы?
+			<span class="font-semibold text-indigo-600 hover:text-indigo-500"
+				>Некий дополнительный текст</span
 			>
 		</p>
 	</div>
 </div>
+
+-->
+
+<style>
+	.error {
+	}
+</style>

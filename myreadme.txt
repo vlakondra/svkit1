@@ -123,3 +123,13 @@ const result = await db.all('select * from Artists');
         return { result: [] };
     }
 }) satisfies PageServerLoad;
+
+
+Помоги мне, пожалуйста, еще с SvelteKit.
+ Я разбираюсь с системой аутентификации, встроенной в SvelteKit.
+  Там действие Sign out реализуется через маршрут Lucia. 
+  В файле +page.svelte находится форма и кнопка Sign Out, 
+  по нажатию которой выполняется action Logout в файле +page.server.ts.
+  Однако я хочу, чтобы кнопка Signout размещалась в главном Layout
+ и не была связана с формой, а просто вызывала известные функции
+ invalidateSession и deleteSessionTokenCookie. Как это сделать?
